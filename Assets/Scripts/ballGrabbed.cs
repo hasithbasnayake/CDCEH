@@ -11,15 +11,22 @@ public class ballGrabbed : MonoBehaviour
     public delegate void Released();
     public static event Released OnReleased;
     private bool grabbed = false;
+    private Vector3 initialPosition;
     // Start is called before the first frame update
     void Start()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
+        initialPosition = this.gameObject.transform.position;
+        // Time.timeScale = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.gameObject.transform.position.y < -3)
+        {
+            this.gameObject.transform.position = initialPosition;
+        }
         if (grabInteractable.isSelected)
         {
             if (!grabbed) {
