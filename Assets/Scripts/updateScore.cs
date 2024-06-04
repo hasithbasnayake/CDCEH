@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 public class updateScore : MonoBehaviour
 {
@@ -12,10 +14,12 @@ public class updateScore : MonoBehaviour
     // Score and audio cues will only start to update/happen when the "game" is started
     // "game": the player juggling
     public bool gameStart = true;
+    private registerDevices controllers;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<TMPro.TextMeshPro>().text = "0";
+        controllers = GetComponent<registerDevices>();
     }
 
     void OnEnable() {
@@ -26,7 +30,10 @@ public class updateScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (controllers.rightHand.TryGetFeatureValue(CommonUsages.secondaryButton, out bool Bbutton) && Bbutton)
+        {
+            GetComponent<TMPro.TextMeshPro>().text = "0";
+        }
     }
 
     void UpdateScore() {

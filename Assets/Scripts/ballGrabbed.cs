@@ -20,13 +20,12 @@ public class ballGrabbed : MonoBehaviour
         grabInteractable = GetComponent<XRGrabInteractable>();
         initialPosition = this.gameObject.transform.position;
         initialRotation = this.gameObject.transform.rotation;
-        // Time.timeScale = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.transform.position.y < -3 || this.gameObject.transform.position.y > 10 || this.gameObject.transform.position.x < -4 || this.gameObject.transform.position.x > 6 || this.gameObject.transform.position.z < -1 || this.gameObject.transform.position.z > 8)
+        if (this.gameObject.transform.position.y < -3 || this.gameObject.transform.position.y > 10 || this.gameObject.transform.position.x < -6 || this.gameObject.transform.position.x > 3.5 || this.gameObject.transform.position.z < -6.5 || this.gameObject.transform.position.z > 3.5)
         {
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
